@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>文章搜索 - 我的博客</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root{ --c:#00695c; }
+    body{margin:0;padding:2rem;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;}
+    h1{color:var(--c)}
+    #q{width:100%;padding:.6rem;font-size:1rem;border:1px solid #bbb;border-radius:4px}
+    #results{margin-top:1rem}
+    .item{display:block;padding:.75rem 0;border-bottom:1px solid #eee;color:#333;text-decoration:none}
+    .item:hover{background:#f7f7f7}
+    .item h2{margin:.2rem 0;font-size:1.1rem;color:var(--c)}
+    .item p{margin:0;color:#666;font-size:.9rem}
+    .highlight{background:#ffeb3b}
+    .empty{color:#999}
+  </style>
+</head>
+<body>
+  <h1>🔍 文章搜索</h1>
+  <input id="q" type="search" placeholder="输入关键词…" autocomplete="off">
+  <div id="results"></div>
+
+<script>
+/* 1. 配置：根据你的目录结构修改 */
+const CONFIG = {
+  postsDir : '/posts',   // 文章 URL 前缀
+  indexUrl : '/posts.json' // 文章索引文件，也可自动生成
+};
+
+/* 2. 生成或加载文章索引 */
+let INDEX = [];
+fetch(CONFIG.indexUrl)
+  .then(r => r.json())
+  .then(data => INDEX = data)
+  .catch(buildIndexFromDOM); // 如果没有 posts.json，则尝试解析 DOM
+
+/* 3. 无 posts.json 时，扫描 /posts 目录下的链接 */
+function buildIndexFromDOM() {
+  // 需要服务端列出目录，或者手动维护列表
+  // 这里演示一个简单实现：假设你把所有文章链接放在一个 <ul id="all-posts"> 里
+  const list = document.getElementById('all-posts');
+  if (!list) return;
+  [...list.querySelectorAll('a')].forEach(a=>{
+    INDEX.push({
+      title: a.textContent.trim(),
+      url:   a.href,
+      body:  '' // 无法直接读取内容，留空
+    });
+  });
+}
+
+/* 4. 实时搜索 */
+const qEl   = document.getElementById('q');
+const resEl = document.getElementById('results');
+
+qEl.addEventListener('input', () => {
+  const kw = qEl.value.trim().toLowerCase();
+  if (!kw) { resEl.innerHTML=''; return; }
+
+  const hits = INDEX.filter(p => 
+    p.title.toLowerCase().includes(kw) || p.body.toLowerCase().includes(kw)
+  );
+
+  resEl.innerHTML = hits.length
+    ? hits.map(p => `
+        <a class="item" href="${p.url}">
+          <h2>${mark(p.title,kw)}</h2>
+          <p>${mark((p.body||'').slice(0,120),kw)}…</p>
+        </a>`).join('')
+    : '<p class="empty">没有找到相关文章</p>';
+});
+
+/* 5. 关键词高亮 */
+function mark(text, kw) {
+  const reg = new RegExp(`(${kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi');
+  return text.replace(reg,'<span class="highlight">$1</span>');
+}
+</script>
+
+<!-- 可选：把所有文章链接放在一个隐藏的列表里，供 buildIndexFromDOM 读取 -->
+<ul id="all-posts" style="display:none">
+  <!-- 每篇文章一条 -->
+  <li><a href="/posts/2024/hello-world.html">Hello World</a></li>
+  <li><a href="/posts/2024/minecraft-1-21.html">Minecraft 1.21 新特性解析</a></li>
+  <li><a href="/posts/2024/minecraft-1-20.html">Minecraft 1.20 新特性解析</a></li>
+</ul>
+</body>
+</html>
