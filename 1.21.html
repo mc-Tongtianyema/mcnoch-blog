@@ -2,71 +2,102 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Minecraft Java Edition 1.21</title>
+    <title>Minecraft 1.21「棘巧试炼」新特性全解析</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .infobox { border: 1px solid #aaa; padding: 5px; margin-bottom: 10px; }
-        .infobox img { height: 50px; }
-        table, th, td { border: 1px solid black; border-collapse: collapse; }
-        th, td { padding: 5px; }
-        h1, h2, h3 { color: #333; }
+        body { font-family: -apple-system, BlinkMacSystemFont， "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; padding: 2rem; background: #f5f5f5; color: #333; }
+        h1， h2， h3 { color: #2e7d32; }
+        。card { background: #fff; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        。card h2 { margin-top: 0; border-bottom: 1px solid #e0e0e0; padding-bottom: .5rem; }
+        ul { padding-left: 1.25rem; }
+        li { margin: .5rem 0; }
+        code { background: #e8f5e9; padding: .2rem .4rem; border-radius: 4px; }
     </style>
 </head>
 <body>
-    <h1>Minecraft Java Edition 1.21</h1>
-    <div class="infobox">
-        <img src="1.21.png" alt="1.21">
-        <p><strong>名称:</strong> 棘巧试炼</p>
-        <p><strong>版本:</strong> Java</p>
-        <p><strong>发布日期:</strong> 2024年6月13日</p>
-    </div>
 
-    <h2>新内容</h2>
-    <h3>方块</h3>
-    <table>
-        <tr>
-            <th>方块名称</th>
-            <th>介绍</th>
-        </tr>
-        <tr>
-            <td>雕纹铜块</td>
-            <td>铜块的变种，有着X形花纹。</td>
-        </tr>
-        <tr>
-            <td>铜门</td>
-            <td>会自然生成于试炼密室。</td>
-        </tr>
-        <!-- 其他方块介绍 -->
-    </table>
+<h1>Minecraft 1.21「棘巧试炼」新特性全解析</h1>
 
-    <h3>物品</h3>
+<!-- 1. 结构与地物 -->
+<div class="card">
+    <h2>🗺️ 世界生成：试炼密室</h2>
     <ul>
-        <li>刷怪蛋 - 加入了沼骸刷怪蛋和旋风人刷怪蛋。</li>
-        <li>试炼钥匙 - 可从试炼密室的箱子、饰纹陶罐和试炼刷怪笼战利品中获得。</li>
-        <!-- 其他物品介绍 -->
+        <li><strong>试炼密室（Trial Chambers）</strong>：由凝灰岩与铜方块组成的大型地下结构，内含旋转木马式刷怪笼与奖励宝箱，专为多人合作挑战设计[^6^]。</li>
+        <li><strong>试炼刷怪笼（Trial Spawner）</strong>：根据附近玩家数量与难度动态调整波次，击败后掉落试炼钥匙（Trial Key）[^1^]。</li>
     </ul>
+</div>
 
-    <h3>生物</h3>
+<!-- 2. 新方块 -->
+<div class="card">
+    <h2>🧱 新增方块</h2>
     <ul>
-        <li>沼骸 - 骷髅的新变种，拥有不同的生命值和攻击间隔。</li>
-        <li>旋风人 - 类似烈焰人的幽灵状敌对生物，自然通过试炼刷怪笼生成于试炼密室中。</li>
+        <li><strong>保险库（Vault）</strong>：需试炼钥匙开启，每位玩家可独立领取一次战利品，无争抢风险[^1^]。</li>
+        <li><strong>铜箱（Copper Chest）</strong>：随时间氧化，可打蜡防锈；可与铜傀儡联动实现自动分拣[^4^]。</li>
+        <li><strong>雕纹铜块、铜格栅、铜灯泡</strong>：丰富建筑与红石装饰。</li>
     </ul>
+</div>
 
-    <h3>非生物实体</h3>
+<!-- 3. 新生物 -->
+<div class="card">
+    <h2>🐄 生物与掉落</h2>
     <ul>
-        <li>风弹 - 由旋风人或风弹物品发射的弹射物。</li>
-        <!-- 其他非生物实体介绍 -->
+        <li><strong>旋风人（Breeze）</strong>：跃动发射风弹，造成范围击退；掉落<strong>旋风棒（Breeze Rod）</strong>，用于合成重锤[^6^]。</li>
+        <li><strong>铜傀儡（Copper Golem）</strong>：实验性特性，可帮玩家把铜箱里的物品按类别分送到周围箱子[^4^]。</li>
+        <li><strong>女巫</strong>：死亡时固定掉落 4–8 个红石粉，抢夺 III 最多 11 个，提升红石农场效率[^2^][^7^]。</li>
     </ul>
+</div>
 
-    <!-- 世界生成、游戏内容等其他章节 -->
+<!-- 4. 武器与工具 -->
+<div class="card">
+    <h2>⚔️ 武器与装备</h2>
+    <ul>
+        <li><strong>重锤（Mace）</strong>：旋风棒 + 重核合成，高空坠落攻击伤害随高度增加，可实现“一锤秒杀”[^6^]。</li>
+        <li><strong>铜质装备</strong>：介于石与铁之间，耐久高于石，附魔能力优于钻石；包含全套工具与盔甲（实验性）[^4^]。</li>
+    </ul>
+</div>
 
-    <h2>参考</h2>
-    <!-- 参考内容 -->
+<!-- 5. 药水与箭矢 -->
+<div class="card">
+    <h2>🧪 新药水 & 箭矢</h2>
+    <ul>
+        <li>药水/箭矢：Infestation、Oozing、Weaving、Wind Charging，分别对应不同状态效果[^6^]。</li>
+        <li><strong>不祥之瓶（Ominous Bottle）</strong>：饮用后获得 1000 分钟不祥之兆，进入村庄即触发袭击[^6^]。</li>
+    </ul>
+</div>
 
-    <h2>导航</h2>
-    <nav>
-        <a href="1.20">上一个版本</a>
-        <a href="1.21.1">下一个版本</a>
-    </nav>
+<!-- 6. 考古与装饰 -->
+<div class="card">
+    <h2>🏺 考古 & 装饰</h2>
+    <ul>
+        <li><strong>考古系统</strong>：在沙漠水井、试炼密室等处的可疑沙砾中，使用<strong>刷子（Brush）</strong>发掘<strong>陶器碎片（Pottery Sherd）</strong>，合成装饰陶罐[^3^][^6^]。</li>
+        <li><strong>20 幅新画作、3 张新音乐唱片、2 款旗帜图案</strong>：通过开启保险库或交易获得[^6^]。</li>
+    </ul>
+</div>
+
+<!-- 7. 技术 & 命令 -->
+<div class="card">
+    <h2>⚙️ 技术改动</h2>
+    <ul>
+        <li>可骑乘实体（船、马、矿车等）现在可以直接穿越下界传送门[^7^]。</li>
+        <li>Java 版船/筏支持牵引绳，便于运输村民[^7^]。</li>
+        <li>新命令选择器 <code>@n</code>：定位距离命令执行者最近的实体[^7^]。</li>
+        <li>实体属性、药水效果、附魔等全面数据包驱动，方便自定义服务器整合[^7^]。</li>
+        <li>新增多项实体属性：<code>generic.burning_time</code>、<code>player.sneaking_speed</code> 等，支持更精细的数据包调节[^2^]。</li>
+    </ul>
+</div>
+
+<!-- 8. 性能与修复 -->
+<div class="card">
+    <h2>🛠️ 性能与 BUG 修复</h2>
+    <ul>
+        <li>TNT 穿越下界传送门后不再破坏传送门方块[^2^]。</li>
+        <li>拴绳逻辑统一：基岩版与 Java 版行为趋同，拴住的生物可随船、矿车移动[^4^][^7^]。</li>
+        <li>大量图形与音效微调：沼泽群系水体颜色、巨型云杉/podzol 生成等[^4^]。</li>
+    </ul>
+</div>
+
+<footer style="text-align:center;margin-top:2rem;font-size:.875rem;color:#666;">
+    资料编译自 Minecraft Wiki、Mojang 官方公告及社区测试。最后更新：2025-08-11
+</footer>
+
 </body>
 </html>
