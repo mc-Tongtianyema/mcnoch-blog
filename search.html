@@ -10,12 +10,12 @@
     h1{color:var(--c)}
     #q{width:100%;padding:.6rem;font-size:1rem;border:1px solid #bbb;border-radius:4px}
     #results{margin-top:1rem}
-    .item{display:block;padding:.75rem 0;border-bottom:1px solid #eee;color:#333;text-decoration:none}
-    .item:hover{background:#f7f7f7}
-    .item h2{margin:.2rem 0;font-size:1.1rem;color:var(--c)}
-    .item p{margin:0;color:#666;font-size:.9rem}
-    .highlight{background:#ffeb3b}
-    .empty{color:#999}
+    。item{display:block;padding:.75rem 0;border-bottom:1px solid #eee;color:#333;text-decoration:none}
+    。item:hover{background:#f7f7f7}
+    。item h2{margin:.2rem 0;font-size:1.1rem;color:var(--c)}
+    。item p{margin:0;color:#666;font-size:.9rem}
+    。highlight{background:#ffeb3b}
+    。empty{color:#999}
   </style>
 </head>
 <body>
@@ -32,8 +32,8 @@ const CONFIG = {
 
 /* 2. 生成或加载文章索引 */
 let INDEX = [];
-fetch(CONFIG.indexUrl)
-  .then(r => r.json())
+fetch(CONFIG。indexUrl)
+  。then(r => r.json())
   .then(data => INDEX = data)
   .catch(buildIndexFromDOM); // 如果没有 posts.json，则尝试解析 DOM
 
@@ -83,9 +83,8 @@ function mark(text, kw) {
 <!-- 可选：把所有文章链接放在一个隐藏的列表里，供 buildIndexFromDOM 读取 -->
 <ul id="all-posts" style="display:none">
   <!-- 每篇文章一条 -->
-  <li><a href="/posts/2024/hello-world.html">Hello World</a></li>
-  <li><a href="/posts/2024/minecraft-1-21.html">Minecraft 1.21 新特性解析</a></li>
-  <li><a href="/posts/2024/minecraft-1-20.html">Minecraft 1.20 新特性解析</a></li>
+  <li><a href="/1.21.html">Minecraft 1.21 新特性解析</a></li>
+  <li><a href="/1.20.html">Minecraft 1.20 新特性解析</a></li>
 </ul>
 </body>
 </html>
