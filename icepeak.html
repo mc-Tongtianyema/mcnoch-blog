@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>漫漫天涯 - Minecraft服务器</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4a5568',      // 主色调：灰色
+                        secondary: '#2d3748',    // 辅助色：深灰
+                        light: '#f7fafc',
+                        dark: '#1a202c'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        kuaile: ['ZCOOL KuaiLe', 'cursive'],
+                        shanzheng: ['Ma Shan Zheng', 'cursive']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/css">
+        .header-title {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: clamp(3rem, 8vw, 5rem);
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+        
+        .nav-gradient {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .section-bg {
+            background: linear-gradient(to bottom, #edf2f7 0%, #e2e8f0 100%);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .server-ip {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #cbd5e0;
+        }
+        
+        .server-ip:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: #a0aec0;
+        }
+        
+        /* 英雄区域图片样式 */
+        .hero-logo {
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: contain;
+        }
+        
+        /* 禁止选择文本 */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* 针对特定元素禁用长按菜单 */
+        .no-copy {
+            -webkit-touch-callout: none;
+        }
+        
+        /* 隐藏辅助复制的元素 */
+        .copy-helper {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-100 text-gray-800 overflow-x-hidden" oncontextmenu="return false;">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 shadow-md nav-gradient">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <i class="fa fa-minecraft-minecart text-gray-700 text-2xl"></i>
+                <span class="text-xl font-bold text-gray-800 font-kuaile">漫漫天涯</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-700 hover:text-secondary transition-colors font-medium">关于我们</a>
+                <a href="#features" class="text-gray-700 hover:text-secondary transition-colors font-medium">服务器特色</a>
+
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="javascript:joinQQGroup()" class="hidden md:block bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-full transition-all shadow-md">
+                    加入QQ群
+                </a>
+                <button class="md:hidden text-gray-700 text-2xl" id="menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-100 border-b border-gray-300 absolute w-full shadow-lg">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#about" class="text-gray-700 hover:text-secondary transition-colors py-2 border-b border-gray-200">关于我们</a>
+                <a href="#features" class="text-gray-700 hover:text-secondary transition-colors py-2 border-b border-gray-200">服务器特色</a>
+
+                <a href="javascript:joinQQGroup()" class="bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-full text-center transition-all shadow-md">
+                    加入QQ群
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300">
+        <!-- 背景图片 -->
+        <div class="absolute inset-0 z-0">
+            <img src="1.png" alt="服务器背景图" class="w-full h-full object-cover opacity-40">
+        </div>
+        <!-- 主要内容 -->
+        <div class="container mx-auto px-4 z-10 text-center relative">
+            <div class="flex flex-col items-center mb-10">
+                <h1 class="header-title text-gray-800 mb-6">
+                    漫漫天涯
+                </h1>
+                <p class="subtitle text-gray-700 mb-8 max-w-2xl mx-auto">
+                    探索无限可能，结交志同道合的伙伴，开启你的MC冒险之旅
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
+                <div id="copy-ip" class="server-ip px-6 py-3 rounded-full flex items-center space-x-2 cursor-pointer group transition-colors no-copy">
+                    <i class="fa fa-server text-gray-700 group-hover:text-gray-900 transition-colors"></i>
+                    <span class="font-mono text-gray-800 font-bold">icepeak.318.run</span>
+                </div>
+                <a href="javascript:joinQQGroup('878699676')" class="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg flex items-center space-x-2">
+                    <i class="fa fa-qq"></i>
+                    <span>加入QQ群</span>
+                </a>
+            </div>
+            <div class="animate-bounce absolute bottom48 left-1/2 transform -translate-x-1/2">
+                    <a href="#about" class="text-gray-700 hover:text-gray-900 text-3xl">
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                </div>
+        </div>
+    </header>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 section-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-kuaile">关于我们</h2>
+                <div class="w-24 h-1 bg-gray-600 mx-auto"></div>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">探索无尽的Minecraft世界</h3>
+                <p class="text-gray-700 mb-6 leading-relaxed text-lg">
+                    漫漫天涯服务器创建于2023年，致力于为玩家提供一个公平、友好、有趣的游戏环境。我们拥有专业的技术团队，24小时在线维护，确保服务器稳定运行。
+                </p>
+                <p class="text-gray-700 mb-10 leading-relaxed text-lg">
+                    在这里，你可以与来自世界各地的玩家一起建造、冒险、战斗，创造属于你的传奇故事。我们定期举办各种活动，提供丰富的奖励，让你的游戏体验更加丰富多彩。
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-300 transition-all feature-card">
+                        <div class="text-gray-700 text-3xl mb-3"><i class="fa fa-users"></i></div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">友好社区</h4>
+                        <p class="text-gray-600">来自全球的玩家，共同构建和谐游戏环境</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-300 transition-all feature-card">
+                        <div class="text-gray-700 text-3xl mb-3"><i class="fa fa-shield"></i></div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">安全稳定</h4>
+                        <p class="text-gray-600">专业技术团队，24小时在线维护</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-300 transition-all feature-card">
+                        <div class="text-gray-700 text-3xl mb-3"><i class="fa fa-calendar-check-o"></i></div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">丰富活动</h4>
+                        <p class="text-gray-600">定期举办各种活动，提供丰厚奖励</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 hover:border-gray-300 transition-all feature-card">
+                        <div class="text-gray-700 text-3xl mb-3"><i class="fa fa-cogs"></i></div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">多种玩法</h4>
+                        <p class="text-gray-600">生存、创造、小游戏等多种游戏模式</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务器特色 -->
+    <section id="features" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-kuaile">服务器特色</h2>
+                <div class="w-24 h-1 bg-gray-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">探索我们服务器的独特玩法和特色功能，体验不一样的Minecraft世界</p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-white rounded-xl p-8 border border-gray-200 transition-all feature-card max-w-md">
+                    <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fa fa-tree text-gray-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">纯净生存</h3>
+                    <p class="text-gray-600 mb-4 text-center">体验最原始的Minecraft生存模式，收集资源、建造家园、对抗怪物，感受生存的乐趣。</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><i class="fa fa-check text-green-600 mr-2"></i> 无OP干扰</li>
+                        <li class="flex items-center"><i class="fa fa-check text-green-600 mr-2"></i> 经济系统</li>
+                        <li class="flex items-center"><i class="fa fa-check text-green-600 mr-2"></i> 领地保护</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 简单页脚 -->
+    <footer class="bg-gray-800 text-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p>© 2023 漫漫天涯 Minecraft服务器. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-gray-700 text-white rounded-full flex items-center justify-center shadow-lg transform transition-all scale-0 hover:bg-gray-800 z-50">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+    
+    <!-- 辅助复制的隐藏元素 -->
+    <textarea id="copy-helper" class="copy-helper">icepeak.318.run</textarea>
+
+    <!-- JavaScript -->
+    <script>
+        // 禁止右键菜单
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // 禁止选择文本
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // 禁止复制
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // QQ群跳转脚本
+        function joinQQGroup() {
+            window.open('https://qm.qq.com/cgi-bin/qm/qr?k=GrRjlxPXCLVeOMGfcHr8Gwrt2EWSvI4g&jump_from=webapi&authKey=L0dPrY5ZLuVy4V3cQqHeRo4RbJgoecZq2f3RICA0u1JddP4Zi8+IoNvmCvcitvTf', '_blank');
+        }
+        
+        // 修复连续点击问题：存储定时器变量
+        let copyTimer = null;
+        
+        // 点击复制IP功能 - 修复版
+        document.getElementById('copy-ip').addEventListener('click', function() {
+            const ip = 'icepeak.318.run';
+            const helper = document.getElementById('copy-helper');
+            helper.value = ip;
+            helper.select();
+            
+            try {
+                // 使用更兼容的方法复制文本
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    // 清除之前的定时器（如果存在）
+                    if (copyTimer) {
+                        clearTimeout(copyTimer);
+                        copyTimer = null;
+                    }
+                    
+                    const originalHTML = this.innerHTML;
+                    this.innerHTML = '<i class="fa fa-check text-green-500 text-xl"></i><span class="font-mono text-gray-800 font-bold ml-2">已复制!</span>';
+                    
+                    // 设置定时器恢复原始状态
+                    copyTimer = setTimeout(() => {
+                        this.innerHTML = originalHTML;
+                        copyTimer = null;
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('复制失败: ', err);
+            }
+        });
+
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-lg');
+                backToTop.classList.replace('scale-0', 'scale-100');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                backToTop.classList.replace('scale-100', 'scale-0');
+            }
+        });
+
+        // 移动端菜单切换
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (menuToggle.innerHTML.includes('bars')) {
+                menuToggle.innerHTML = '<i class="fa fa-times"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="fa fa-bars"></i>';
+            }
+        });
+
+        // 返回顶部
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 40,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动端菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        menuToggle.innerHTML = '<i class="fa fa-bars"></i>';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
