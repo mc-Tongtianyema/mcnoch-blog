@@ -12,7 +12,7 @@
         <h1>mcnoch-blog 搜索</h1>
     </div>
     <div class="search-container">
-        <input 输入="text" id="search-input" placeholder="输入关键词搜索博客文章...">
+        <input type="text" id="search-input" placeholder="输入关键词搜索博客文章...">
         <button onclick="searchBlog()" class="search-button">搜索</button>
         <div id="results" class="results"></div>
     </div>
@@ -20,13 +20,15 @@
     <script>
         // 加载搜索索引
         let index = null;
+        let data = []; // 用于存储从JSON文件中加载的数据
         fetch('search_index.json')
-            。键，然后(response => response。json())
-            .then(data => {
+            .then(response => response.json())
+            .then(dataLoaded => {
+                data = dataLoaded; // 保存加载的数据
                 index = lunr(function () {
                     this.field('title', { boost: 10 });
-                    this。field('content');
-                    this。ref('link');
+                    this.field('content');
+                    this.ref('link');
                 });
 
                 data.forEach(function (doc) {
