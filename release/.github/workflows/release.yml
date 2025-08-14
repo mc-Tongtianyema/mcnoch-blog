@@ -1,5 +1,6 @@
 name: Build Release Index
-on:
+
+于:
   push:
     paths: ['release/files/**']
   workflow_dispatch:
@@ -9,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
     - name: Generate release.json
       run: |
         cd release
@@ -18,12 +20,13 @@ jobs:
           [[ "$f" == "files/*" ]] && continue  # 空目录
           name=$(basename "$f")
           size=$(stat -c%s "$f")
-          # GitHub Pages 直链
-          url="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/release/files/$name"
+          # GitHub Pages 直链（已换成你的用户名）
+          url="https://mc-tongtianyema.github.io/mcnoch-blog/release/files/$name"
           [[ $first -eq 0 ]] && echo ',' >> release.json || first=0
           printf '{"name":"%s","size":%d,"url":"%s"}' "$name" "$size" "$url" >> release.json
         done
         echo ']' >> release.json
+
     - name: Commit & push
       run: |
         git config user.name  "github-actions[bot]"
