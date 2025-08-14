@@ -8,3 +8,7 @@
 .contact{list-style:none;padding:0}
 .contact li{margin:.5rem 0}
 .contact a{color:#0366d6}
+/* 关于页背景图 */
+.hero {
+  background: url('/img/bg.jpg') center/cover no-repeat;
+}
