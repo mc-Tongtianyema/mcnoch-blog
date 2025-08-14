@@ -1,0 +1,10 @@
+/* 关于页专用 */
+.hero{height:45vh;text-align:center;color:#fff;background:url(../img/bg.jpg) center/cover;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.hero *{position:relative}
+.btn-back{position:absolute;top:1rem;left:1.5rem;padding:.4rem 1rem;border:1px solid #fff;border-radius:20px;color:#fff;font-size:.9rem}
+.btn-back:hover{background:#fff;color:#111;text-decoration:none}
+.card{background:#fff;margin:1.5rem 0;padding:1.8rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.contact{list-style:none;padding:0}
+.contact li{margin:.5rem 0}
+.contact a{color:#0366d6}
