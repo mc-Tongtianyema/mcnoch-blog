@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>关于 mc_noch</title>
-  <link rel="stylesheet" href="css/blog.css"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>mc_noch 博客</title>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
-
 <body>
 <header class="hero">
-  <h1>关于 mc_noch</h1>
-  <p>一个爱折腾代码的 Minecraft 玩家</p>
-  <li><a href="/mcnoch-blog">← 返回首页</a></li>
+    <img src="img/logo.png" alt="mc_noch" class="logo"/>
+    <h1>mc_noch 博客</h1>
+    <p>记录代码、折腾与生活的点滴</p>
+    <a href="#main" class="btn-scroll">开始阅读</a>
 </header>
 
-<main>
-  <!-- 个人简介 -->
-  <section class="card">
-    <h2>我是谁？</h2>
-    <p>
-      大家好，我是 <strong>mc_noch</strong>，一名在校大学生 / 前端搬砖工。
-      2020 年开始玩 Minecraft，从“撸树”到研究红石，再到自己写插件、搭服务器，
-      一路跌跌撞撞，也算半个“老玩家”。
-    </p>
-    <p>
-      除了游戏，我还喜欢折腾前端、写脚本、做自动化。
-      这个博客既记录开服踩坑，也放些前端笔记和生活碎片。
-    </p>
-  </section>
+<main id="main">
+    <section class="intro">
+        <h2>欢迎来到我的博客</h2>
+        <p>
+            这里是一个热爱 Minecraft 与前端开发的技术宅的小站。<br/>
+            我会不定期分享插件开发、服务器折腾、以及生活随想。
+        </p>
+    </section>
 
-  <!-- 服务器履历 -->
-  <section class="card">
-    <h2>服务器履历</h2>
-    <ul>
-      <li><strong>2024.03</strong> 和朋友开第一个原版私服，纯生存（已关）。</li>
-      <li><strong>2024.05</strong> 尝试 Spigot 私服，勉强运行，准备关闭。</li>
-      <li><strong>2025.07.28</strong> 当前运行「mc_noch 生存服」——欢迎来玩！</li>
-    </ul>
-  </section>
+    <section class="features">
+        <h2>博客导航</h2>
+        <div class="cards">
+            <a class="card" href="posts/">
+                <h3>技术文章</h3>
+                <p>Minecraft 插件 / 前端笔记 / 工具脚本</p>
+            </a>
 
-  <!-- 联系方式 -->
-  <section class="card">
-    <h2>找到我</h2>
-    <ul class="contact">
-      <li>GitHub：<a href="https://github.com/mc-tongtianyema" target="_blank">@mc-tongtianyema</a></li>
-      <li>Email：<a href="mailto:mc_noch@moemail.com">mc_noch@moemail.com</a></li>
-      <li>QQ群：978936464（备注 mc_noch）</li>
-    </ul>
-  </section>
+            <a class="card" href="server/">
+                <h3>服务器日志</h3>
+                <p>开服记录、配置踩坑、优化心得</p>
+            </a>
+            
+            <a class="card" href="minecraft.html">
+                <h3>我的世界相关</h3>
+                <p>游玩感想，相关教程，每次更新的介绍</p>
+            </a>
+            
+            <a class="card" href="about/">
+                <h3>关于我</h3>
+                <p>mc_noch 是谁？如何联系？</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="latest">
+        <h2>最近更新</h2>
+        <ul id="latest-posts">
+            <!-- 这里可以用 GitHub Actions 或手动维护 -->
+            <li><a href="/mcnoch-blog">暂无</a></li>
+        </ul>
+    </section>
 </main>
 
 <footer>
-  <p>© 2024 mc_noch</p>
+    <p>© 2024 mc_noch | <a href="mailto:mc_noch@moemail.app">mc_noch@moemail.app</a></p>
 </footer>
 
 <script src="js/script.js"></script>
