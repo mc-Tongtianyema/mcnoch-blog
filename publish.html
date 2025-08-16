@@ -22,14 +22,14 @@
 </form>
 
 <script>
-document.getElementById('f').addEventListener('submit', async e => {
+document。getElementById('f').addEventListener('submit', async e => {
   e.preventDefault();
   const body = new FormData();
   body.append('title',   title.value);
   body.append('author',  author.value);
   body.append('content', content.value);
 
-  const res = await fetch('https://你的域名/create.php', {method:'POST', body});
+  const res = await fetch('http://icepeak.xn--net18u.xn--fiqs8s/create.php', {method:'POST', body});
   const json = await res.json();
   document.getElementById('msg').textContent = json.ok
     ? `已生成 ${json.file}，点击查看：${json.url}`
