@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>发布文章 · 前端调用后端</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  body{max-width:600px;margin:40px auto;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC",sans-serif}
+  input,textarea{width:100%;margin:.5em 0;padding:.5em}
+  button{padding:.5em 1.2em}
+</style>
+</head>
+<body>
+<h2>发布新文章（服务器端生成静态文件）</h2>
 
+<form id="f">
+  <input id="title"   placeholder="标题" required>
+  <input id="author"  placeholder="作者（可选）">
+  <textarea id="content" rows="10" placeholder="正文（支持 Markdown）" required></textarea>
+  <button type="submit">发布</button>
+  <p id="msg"></p>
+</form>
+
+<script>
+document.getElementById('f').addEventListener('submit', async e => {
+  e.preventDefault();
+  const body = new FormData();
+  body.append('title',   title.value);
+  body.append('author',  author.value);
+  body.append('content', content.value);
+
+  const res = await fetch('https://你的域名/create.php', {method:'POST', body});
+  const json = await res.json();
+  document.getElementById('msg').textContent = json.ok
+    ? `已生成 ${json.file}，点击查看：${json.url}`
+    : json.error;
+});
+</script>
+</body>
+</html>
